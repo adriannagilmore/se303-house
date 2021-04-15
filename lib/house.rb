@@ -1,4 +1,5 @@
 class House
     def line(lineNum)
+        "This is the house that Jack built.\n" 
     end
 end
