@@ -1,5 +1,7 @@
 class House
     def line(lineNum)
-        "This is the house that Jack built.\n" 
+        case lineNum
+        when 1
+            "This is the house that Jack built.\n" 
     end
 end
