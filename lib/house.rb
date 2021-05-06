@@ -1,38 +1,39 @@
 class House
     def recite
-        lines(1, 12)
+        (1..12).map { |lineNum| line(lineNum) }.join("\n")
     end
 
-    def lines(lower, upper)
-        lower.upto(upper).collect { |i| line(i) }.join("\n")
+    def phrase(lineNum)
+        case lineNum
+        when 1
+            ""
+        when 2
+            "malt that lay in the "
+        when 3
+            "rat that ate the malt that lay in the "
+        when 4
+            "cat that killed the rat that ate the malt that lay in the "
+        when 5
+            "dog that worried the cat that killed the rat that ate the malt that lay in the "
+        when 6
+            "cow with the crumpled horn that tossed the dog that worried the cat that killed the rat that ate the malt that lay in the "
+        when 7
+            "maiden all forlorn that milked the cow with the crumpled horn that tossed the dog that worried the cat that killed the rat that ate the malt that lay in the "
+        when 8
+            "man all tattered and torn that kissed the maiden all forlorn that milked the cow with the crumpled horn that tossed the dog that worried the cat that killed the rat that ate the malt that lay in the "
+        when 9
+            "priest all shaven and shorn that married the man all tattered and torn that kissed the maiden all forlorn that milked the cow with the crumpled horn that tossed the dog that worried the cat that killed the rat that ate the malt that lay in the "
+        when 10
+            "rooster that crowed in the morn that woke the priest all shaven and shorn that married the man all tattered and torn that kissed the maiden all forlorn that milked the cow with the crumpled horn that tossed the dog that worried the cat that killed the rat that ate the malt that lay in the "
+        when 11
+            "farmer sowing his corn that kept the rooster that crowed in the morn that woke the priest all shaven and shorn that married the man all tattered and torn that kissed the maiden all forlorn that milked the cow with the crumpled horn that tossed the dog that worried the cat that killed the rat that ate the malt that lay in the "
+        when 12
+            "horse and the hound and the horn that belonged to the farmer sowing his corn that kept the rooster that crowed in the morn that woke the priest all shaven and shorn that married the man all tattered and torn that kissed the maiden all forlorn that milked the cow with the crumpled horn that tossed the dog that worried the cat that killed the rat that ate the malt that lay in the "
+        end
+        
     end
 
     def line(lineNum)
-        case lineNum
-        when 1
-            "This is the house that Jack built.\n" 
-        when 2
-            "This is the malt that lay in the house that Jack built.\n"
-        when 3
-            "This is the rat that ate the malt that lay in the house that Jack built.\n"
-        when 4
-            "This is the cat that killed the rat that ate the malt that lay in the house that Jack built.\n"
-        when 5
-            "This is the dog that worried the cat that killed the rat that ate the malt that lay in the house that Jack built.\n"
-        when 6
-            "This is the cow with the crumpled horn that tossed the dog that worried the cat that killed the rat that ate the malt that lay in the house that Jack built.\n"
-        when 7
-            "This is the maiden all forlorn that milked the cow with the crumpled horn that tossed the dog that worried the cat that killed the rat that ate the malt that lay in the house that Jack built.\n"
-        when 8
-            "This is the man all tattered and torn that kissed the maiden all forlorn that milked the cow with the crumpled horn that tossed the dog that worried the cat that killed the rat that ate the malt that lay in the house that Jack built.\n"
-        when 9
-            "This is the priest all shaven and shorn that married the man all tattered and torn that kissed the maiden all forlorn that milked the cow with the crumpled horn that tossed the dog that worried the cat that killed the rat that ate the malt that lay in the house that Jack built.\n"
-        when 10
-            "This is the rooster that crowed in the morn that woke the priest all shaven and shorn that married the man all tattered and torn that kissed the maiden all forlorn that milked the cow with the crumpled horn that tossed the dog that worried the cat that killed the rat that ate the malt that lay in the house that Jack built.\n"
-        when 11
-            "This is the farmer sowing his corn that kept the rooster that crowed in the morn that woke the priest all shaven and shorn that married the man all tattered and torn that kissed the maiden all forlorn that milked the cow with the crumpled horn that tossed the dog that worried the cat that killed the rat that ate the malt that lay in the house that Jack built.\n"
-        when 12
-            "This is the horse and the hound and the horn that belonged to the farmer sowing his corn that kept the rooster that crowed in the morn that woke the priest all shaven and shorn that married the man all tattered and torn that kissed the maiden all forlorn that milked the cow with the crumpled horn that tossed the dog that worried the cat that killed the rat that ate the malt that lay in the house that Jack built.\n"
-        end
+        "This is the #{phrase(lineNum)}house that Jack built.\n" 
     end
 end
