@@ -7,29 +7,31 @@ class House
 
     def phrase
         [
-            "", "",
+            "", 
 
-            "malt that lay in the ",
+            " house that Jack built",
 
-            "rat that ate the malt that lay in the ",
+            " malt that lay in the",
 
-            "cat that killed the rat that ate the malt that lay in the ",
+            " rat that ate the",
 
-            "dog that worried the cat that killed the rat that ate the malt that lay in the ",
+            " cat that killed the",
 
-            "cow with the crumpled horn that tossed the dog that worried the cat that killed the rat that ate the malt that lay in the ",
+            " dog that worried the",
 
-            "maiden all forlorn that milked the cow with the crumpled horn that tossed the dog that worried the cat that killed the rat that ate the malt that lay in the ",
+            " cow with the crumpled horn that tossed the",
 
-            "man all tattered and torn that kissed the maiden all forlorn that milked the cow with the crumpled horn that tossed the dog that worried the cat that killed the rat that ate the malt that lay in the ",
+            " maiden all forlorn that milked the",
 
-            "priest all shaven and shorn that married the man all tattered and torn that kissed the maiden all forlorn that milked the cow with the crumpled horn that tossed the dog that worried the cat that killed the rat that ate the malt that lay in the ",
+            " man all tattered and torn that kissed the",
 
-            "rooster that crowed in the morn that woke the priest all shaven and shorn that married the man all tattered and torn that kissed the maiden all forlorn that milked the cow with the crumpled horn that tossed the dog that worried the cat that killed the rat that ate the malt that lay in the ",
+            " priest all shaven and shorn that married the",
 
-            "farmer sowing his corn that kept the rooster that crowed in the morn that woke the priest all shaven and shorn that married the man all tattered and torn that kissed the maiden all forlorn that milked the cow with the crumpled horn that tossed the dog that worried the cat that killed the rat that ate the malt that lay in the ",
+            " rooster that crowed in the morn that woke the",
 
-            "horse and the hound and the horn that belonged to the farmer sowing his corn that kept the rooster that crowed in the morn that woke the priest all shaven and shorn that married the man all tattered and torn that kissed the maiden all forlorn that milked the cow with the crumpled horn that tossed the dog that worried the cat that killed the rat that ate the malt that lay in the ",
+            " farmer sowing his corn that kept the",
+
+            " horse and the hound and the horn that belonged to the",
         ]
     end
 
@@ -37,10 +39,19 @@ class House
         (1..phrase.length-1).map { |lineNum| line(lineNum) }.join("\n")
     end
 
-    def line(lineNum)
-        "#{line_start} the #{phrase[lineNum]}house that Jack built.\n"
+    def add_phrases(lineNum)
+      full_phrase = ""
+      
+      for i in 0..lineNum do
+        full_phrase = phrase[i] + full_phrase
+      end
+      
+      full_phrase
     end
 
+    def line(lineNum)
+      "#{line_start} the#{add_phrases(lineNum)}.\n"
+    end
 end
 
 class Pirate < House
@@ -48,3 +59,12 @@ class Pirate < House
     @line_start = "Thar be"
   end
 end
+
+class RandomVersion < House
+  def line(lineNum)
+    phrase.shuffle
+    "#{line_start} the #{phrase[lineNum]}house that Jack built.\n"
+  end
+end
+
+#puts RandomVersion.new("Thar be").recite
