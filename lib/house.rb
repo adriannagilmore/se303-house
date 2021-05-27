@@ -6,33 +6,33 @@ class House
     end
 
     def phrase
-        [
-            "", 
+    [
+        "", 
 
-            " house that Jack built",
-
-            " malt that lay in the",
-
-            " rat that ate the",
-
-            " cat that killed the",
-
-            " dog that worried the",
-
-            " cow with the crumpled horn that tossed the",
-
-            " maiden all forlorn that milked the",
-
-            " man all tattered and torn that kissed the",
-
-            " priest all shaven and shorn that married the",
-
-            " rooster that crowed in the morn that woke the",
-
-            " farmer sowing his corn that kept the",
-
-            " horse and the hound and the horn that belonged to the",
-        ]
+        " the house that Jack built",
+  
+        " the malt that lay in",
+  
+        " the rat that ate",
+  
+        " the cat that killed",
+  
+        " the dog that worried",
+  
+        " the cow with the crumpled horn that tossed",
+  
+        " the maiden all forlorn that milked",
+  
+        " the man all tattered and torn that kissed",
+  
+        " the priest all shaven and shorn that married",
+  
+        " the rooster that crowed in the morn that woke",
+  
+        " the farmer sowing his corn that kept",
+  
+        " the horse and the hound and the horn that belonged to"
+    ]
     end
 
     def recite
@@ -50,7 +50,7 @@ class House
     end
 
     def line(lineNum)
-      "#{line_start} the#{add_phrases(lineNum)}.\n"
+      "#{line_start}#{add_phrases(lineNum)}.\n"
     end
 end
 
@@ -61,10 +61,35 @@ class Pirate < House
 end
 
 class RandomVersion < House
-  def line(lineNum)
-    phrase.shuffle
-    "#{line_start} the #{phrase[lineNum]}house that Jack built.\n"
+  def phrase
+    [
+      "", 
+
+      " the house that Jack built",
+
+      " the malt that lay in",
+
+      " the rat that ate",
+
+      " the cat that killed",
+
+      " the dog that worried",
+
+      " the cow with the crumpled horn that tossed",
+
+      " the maiden all forlorn that milked",
+
+      " the man all tattered and torn that kissed",
+
+      " the priest all shaven and shorn that married",
+
+      " the rooster that crowed in the morn that woke",
+
+      " the farmer sowing his corn that kept",
+
+      " the horse and the hound and the horn that belonged to",
+    ].shuffle
   end
 end
 
-#puts RandomVersion.new("Thar be").recite
+puts RandomVersion.new("Thar be").recite
