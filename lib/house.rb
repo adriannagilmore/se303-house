@@ -42,7 +42,7 @@ class House
     def add_phrases(lineNum)
       full_phrase = ""
       
-      for i in 0..lineNum do
+      for i in 1..lineNum do
         full_phrase = phrase[i] + full_phrase
       end
       
@@ -92,4 +92,26 @@ class RandomVersion < House
   end
 end
 
+class RandomWithJackEnding < RandomVersion
+  def add_phrases(lineNum)
+    full_phrase = " the house that Jack built"
+        
+    for i in 0..lineNum do
+        full_phrase = phrase[i] + full_phrase
+    end
+        
+    full_phrase
+  end
+end
+
+puts RandomVersion.new.recite
+
+puts ""
+puts ""
+
 puts RandomVersion.new("Thar be").recite
+
+puts ""
+puts ""
+
+puts RandomWithJackEnding.new("Thar be").recite
