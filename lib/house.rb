@@ -1,8 +1,9 @@
 class House
-    attr_reader :line_start
+    attr_reader :line_start, :phrases
 
-    def initialize(line_start = "This is")
+    def initialize(line_start = "This is", phrase_array = SubjectAndVerb.new.phrase_array)
         @line_start = line_start
+        @phrases = phrase_array
     end
 
     def recite
@@ -10,7 +11,7 @@ class House
     end
 
     def line(lineNum)
-      "#{line_start}#{SubjectAndVerb.new.add_phrases(lineNum)}.\n"
+      "#{line_start}#{phrases[lineNum]}.\n"
     end
 end
 
@@ -20,51 +21,21 @@ class Pirate < House
   end
 end
 
-class RandomVersion < House
-  def phrase
-    [
-      "", 
 
-      " the house that Jack built",
 
-      " the malt that lay in",
-
-      " the rat that ate",
-
-      " the cat that killed",
-
-      " the dog that worried",
-
-      " the cow with the crumpled horn that tossed",
-
-      " the maiden all forlorn that milked",
-
-      " the man all tattered and torn that kissed",
-
-      " the priest all shaven and shorn that married",
-
-      " the rooster that crowed in the morn that woke",
-
-      " the farmer sowing his corn that kept",
-
-      " the horse and the hound and the horn that belonged to",
-    ].shuffle
-  end
-end
-
-class RandomWithJackEnding < RandomVersion
-  def add_phrases(lineNum)
-    full_phrase = " the house that Jack built"
+# class RandomWithJackEnding < RandomVersion
+#   def add_phrases(lineNum)
+#     full_phrase = " the house that Jack built"
         
-    for i in 0..lineNum do
-        full_phrase = phrase[i] + full_phrase
-    end
+#     for i in 0..lineNum do
+#         full_phrase = phrase[i] + full_phrase
+#     end
         
-    full_phrase
-  end
-end
+#     full_phrase
+#   end
+# end
 
-class SubjectAndVerb < House
+class SubjectAndVerb 
   def subject
     [
       "", 
@@ -125,27 +96,91 @@ class SubjectAndVerb < House
     ]
   end
 
-  def add_phrases(lineNum)
-    full_phrase = ""
+  def full_phrase(lineNum)
+    fullPhrase = ""
     
     for i in 0..lineNum do
-      full_phrase = subject[i] + verb[i] + full_phrase
+      fullPhrase = subject[i] + verb[i] + fullPhrase
     end
     
-    full_phrase
+    fullPhrase
+  end
+
+  def phrase_array
+    new_array = []
+    for i in 0..12 do
+      new_array.append(full_phrase(i))
+    end
+    new_array
   end
 end
 
-#puts RandomVersion.new.recite
+class RandomSubjectAndVerb < SubjectAndVerb
+  def subject
+    [
+    "", 
+    
+    " the house",
+    
+    " the malt",
+    
+    " the rat",
+    
+    " the cat",
+    
+    " the dog",
+    
+    " the cow with the crumpled horn",
+    
+    " the maiden all forlorn",
+    
+    " the man all tattered and torn",
+    
+    " the priest all shaven and shorn",
+    
+    " the rooster that crowed in the morn",
+    
+    " the farmer sowing his corn",
+    
+    " the horse and the hound and the horn",
+    ].shuffle
+  end
+
+  def verb
+    [
+    "", 
+
+    " that Jack built",
+
+    " that lay in",
+
+    " that ate",
+
+    " that killed",
+
+    " that worried",
+
+    " that tossed",
+
+    " that milked",
+
+    " that kissed",
+
+    " that married",
+
+    " that woke",
+
+    " that kept",
+
+    " that belonged to",
+    ].shuffle
+  end
+
+end
+
+
+puts House.new("This is", RandomSubjectAndVerb.new.phrase_array).recite
 
 #puts ""
 #puts ""
 
-#puts RandomVersion.new("Thar be").recite
-
-#puts ""
-#puts ""
-
-#puts RandomWithJackEnding.new("Thar be").recite
-
-#puts ChangeSubjectAndVerb.new.recite
