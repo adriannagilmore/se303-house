@@ -21,20 +21,6 @@ class Pirate < House
   end
 end
 
-
-
-# class RandomWithJackEnding < RandomVersion
-#   def add_phrases(lineNum)
-#     full_phrase = " the house that Jack built"
-        
-#     for i in 0..lineNum do
-#         full_phrase = phrase[i] + full_phrase
-#     end
-        
-#     full_phrase
-#   end
-# end
-
 class SubjectAndVerb 
   def subject
     [
@@ -178,9 +164,23 @@ class RandomSubjectAndVerb < SubjectAndVerb
 
 end
 
+class RandomPhraseArray < SubjectAndVerb
+  def phrase_array
+    new_array = []
+    for i in 0..12 do
+      new_array.append(full_phrase(i))
+    end
+    new_array.shuffle
+  end
+end
 
-puts House.new("This is", RandomSubjectAndVerb.new.phrase_array).recite
+puts House.new("This is", RandomPhraseArray.new.phrase_array).recite
+
+
+#puts House.new("This is", RandomSubjectAndVerb.new.phrase_array).recite
 
 #puts ""
 #puts ""
+
+#puts House.new("Thar be", RandomSubjectAndVerb.new.phrase_array).recite
 
